@@ -57,9 +57,10 @@ async def send_message(chatbot: Chatbot, message: discord.Interaction, user_mess
                 all_url = ""
                 for url in reply['item']['messages'][1]['sourceAttributions']:
                     text = str(text).replace(f"[^{i}^]", "")
-                    all_url += f"{url['providerDisplayName']}\n-> [{url['seeMoreUrl']}]\n\n"
-                    i+=1
-                response = f"{ask}```{all_url}```\n{text}"
+                    all_url += f"{url['providerDisplayName']}\n-> <{url['seeMoreUrl']}>\n\n"
+                    i += 1
+                response = f"{ask}\n{all_url}\n{text}"
+
             else:
                 response = f"{ask}{text}"
             # discord characters limit 
